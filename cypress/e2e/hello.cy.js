@@ -1,22 +1,20 @@
 /// <reference types="cypress" />
 
+import Login from '../support/pages/Login';
+
 describe('Login', () => {
   
   it('should open the login page', () => {
-    cy.visit('http://localhost:3000')
+    Login.access();
   })
   
   it('should fail with incorrect credentials', () => {
-    cy.visit('http://localhost:3000')
-    cy.get('#user_username').type('admin')
-    cy.get('#user_password').type('adminwrong')
-    cy.get('.primary').click()
+    Login.access();
+    Login.as_incorrect_user();
   })
 
   it('should login with correct credentials', () => {
-    cy.visit('http://localhost:3000')
-    cy.get('#user_username').type('admin')
-    cy.get('#user_password').type('admin123')
-    cy.get('.primary').click()
+    Login.access();
+    Login.as_admin();
   })
 })
