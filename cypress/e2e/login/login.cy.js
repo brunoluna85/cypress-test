@@ -1,11 +1,13 @@
 /// <reference types="cypress" />
 
-import Login from '../support/pages/Login';
+//import { should } from 'chai';
+import Login from '../../support/pages/Login';
 
 describe('Login', () => {
   
   it('should open the login page', () => {
     Login.access();
+    
   })
   
   it('should fail with incorrect credentials', () => {
