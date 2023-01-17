@@ -1,13 +1,15 @@
 /// <reference types="cypress" />
 
-//import { should } from 'chai';
 import Login from '../../support/pages/Login';
+const login_el = require('../../support/pages/Login/elements').ELEMENTS;
 
 describe('Login', () => {
   
   it('should open the login page', () => {
     Login.access();
-    
+    cy.get(login_el.buttonLogin)
+        .should('be.visible')
+        .and('have.text', '\nSign in\n')
   })
   
   it('should fail with incorrect credentials', () => {

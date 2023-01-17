@@ -5,16 +5,22 @@ class Login {
         cy.visit('http://localhost:3000');
     }
 
-    as_admin(){
-        cy.get(el.textUsername).type('admin');
-        cy.get(el.textPassword).type('admin123');
+    #login_as(username, password){
+        cy.get(el.textUsername).type(username);
+        cy.get(el.textPassword).type(password);
         cy.get(el.buttonLogin).click();
     }
 
+    as_admin(){
+        this.#login_as('admin', 'admin123')
+    }
+
+    as_manager(){
+        this.#login_as('manager', 'manager123')
+    }
+
     as_incorrect_user(){
-        cy.get(el.textUsername).type('admin');
-        cy.get(el.textPassword).type('invalidpassword');
-        cy.get(el.buttonLogin).click();
+        this.#login_as('wrong_user', 'wrong_password')
     }
 }
 
