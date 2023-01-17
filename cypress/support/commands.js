@@ -27,10 +27,7 @@ import Login from '../support/pages/Login';
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-Cypress.Commands.add('login', (role) => {
-    if (role == 'admin'){
-        Login.as_admin;
-    }else if (role == 'manager'){
-        Login.as_manager;
-    }
-})
+Cypress.Commands.add('login_as_admin', () => {
+    Login.access();
+    Login.as_admin();
+});
