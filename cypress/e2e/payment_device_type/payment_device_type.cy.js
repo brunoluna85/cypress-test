@@ -7,13 +7,13 @@ const payment_device_type_el = require('../../support/pages/PaymentDeviceType/el
 describe('Payment Device Type', () => {
 
     beforeEach(() => {
-        cy.login_as_admin()
+        cy.login_as("admin");
     })
 
     it('should open the payment device type page', () => {
         PaymentDeviceType.access();
         cy.get(payment_device_type_el.pageHeader)
             .should('be.visible')
-            .and('have.text', 'Payment Device Types')
+            .and('have.text', 'Payment Device Types');
     })
 })
