@@ -4,6 +4,7 @@ import Login from '../../support/pages/Login';
 const login_el = require('../../support/pages/Login/elements').ELEMENTS;
 const menu_el = require('../../support/pages/Menu/elements').ELEMENTS;
 
+// only login tests are not using cy.login_as(user), it is using the Page Object login_as(username, password) to do step by step
 describe('Login', () => {
   
   it('should open the login page', () => {
@@ -15,7 +16,7 @@ describe('Login', () => {
   
   it('should fail with incorrect credentials', () => {
     Login.access();
-    Login.as_incorrect_user();
+    Login.login_as("incorrect_user", "incorrect_password");
     cy.get(login_el.alertBox)
         .should('be.visible')
         .and('have.text', 'Invalid Username or password.')
@@ -23,7 +24,7 @@ describe('Login', () => {
 
   it('should login with correct credentials', () => {
     Login.access();
-    Login.as_admin();
+    Login.login_as("admin", "admin123");
     cy.get(menu_el.userNameHeader)
         .should('be.visible')
         .and('have.text', '\nadmin\n')
