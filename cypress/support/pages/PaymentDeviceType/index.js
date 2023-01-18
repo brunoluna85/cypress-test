@@ -2,7 +2,7 @@ const el = require('./elements').ELEMENTS;
 
 class PaymentDeviceType {
     access(){
-        cy.visit('http://localhost:3000/sit/payment_device_types');
+        cy.visit('/sit/payment_device_types');
     }
 }
 

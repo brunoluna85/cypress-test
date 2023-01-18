@@ -2,7 +2,7 @@ const el = require('./elements').ELEMENTS;
 
 class Login {
     access(){
-        cy.visit('http://localhost:3000');
+        cy.visit('/');
     }
 
     login_as(username, password){
