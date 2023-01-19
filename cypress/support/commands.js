@@ -1,33 +1,14 @@
 /// <reference types="cypress" />
 
 import Login from '../support/pages/Login';
+const menu_el = require('./pages/Menu/elements').ELEMENTS;
 
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
 Cypress.Commands.add('login_as', (user = "admin") => {
     Login.access();
     Login.login_as(Cypress.env(user).username, Cypress.env(user).password);
+});
+
+Cypress.Commands.add('select_customer', (customer = `${Cypress.config('customer')}`) => {
+    cy.get(menu_el.customerDropdown).type(customer).type('Cypress.io{enter}');
 });

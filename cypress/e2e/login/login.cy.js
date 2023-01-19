@@ -29,4 +29,14 @@ describe('Login', () => {
         .should('be.visible')
         .and('have.text', '\nadmin\n')
   })
+
+  it('should logout', () => {
+    cy.login_as('admin');
+    cy.get(menu_el.userNameHeaderDropDown).click();
+    cy.get(menu_el.logoutButton).click()
+    cy.get(login_el.alertBox)
+        .should('be.visible')
+        .and('have.text', 'Signed out successfully.');
+    cy.url().should('eq', `${Cypress.config('baseUrl')}`)
+  })
 })
