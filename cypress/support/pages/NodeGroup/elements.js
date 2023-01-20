@@ -3,13 +3,13 @@ export const ELEMENTS = {
     pageHeader: '.content > h2',
 
     new_nodegroup_button: '#Class_add',
-    nodegroup_name: '#node_group_name',
-    nodegroup_save_button: '.submit',
-    nodegroup_search: 'input',
+    name: '#node_group_name',
+    save_button: '.submit',
+    search: 'input',
     searched_nodegroup: '.odd > :nth-child(2)',
-    nodegroup_edit_button: '.io-form-action-edit',
-    nodegroup_edit_save_button: "//a[normalize-space()='Edit']",
-    nodegroup_delete_button: '.alert',
-    nodegroup_confirm_delete: '#ok-link'
+    edit_button: '.io-form-action-edit',
+    edit_save_button: '*[class^="submit io-form-button io-form-action-save io-form-action-save-existing ui primary button"]',
+    delete_button: '.alert',
+    confirm_delete: '#ok-link'
 
 }

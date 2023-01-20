@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
 const node_group_el = require('../../support/pages/NodeGroup/elements').ELEMENTS;
+const menu_el = require('../../support/pages/Menu/elements').ELEMENTS;
 
 describe('Node Group', () => {
 
@@ -22,35 +23,35 @@ describe('Node Group', () => {
 
     it('Create node group', () => {
         cy.get(node_group_el.new_nodegroup_button).click();
-        cy.get(node_group_el.nodegroup_name).type(ng_name);
-        cy.get(node_group_el.nodegroup_save_button).click();
-        cy.contains('Node Group was successfully created.');
-        cy.contains('Your data will be available shortly. Please see exporters list for more details.');
+        cy.get(node_group_el.name).type(ng_name);
+        cy.get(node_group_el.save_button).click();
+        cy.get(menu_el.alertNotice).should('include.text', 'Node Group was successfully created.');
+        cy.get(menu_el.alertInfo).should('include.text', 'Your data will be available shortly. Please see exporters list for more details.');
     });
 
     it('Search a node group', () => {
-        cy.get(node_group_el.nodegroup_search).should('be.visible').click().type(`${ng_name}{enter}`);
-        cy.get(node_group_el.searched_nodegroup).contains(ng_name)
+        cy.get(node_group_el.search).should('be.visible').click().type(`${ng_name}{enter}`);
+        cy.get(node_group_el.searched_nodegroup).contains(ng_name).should('have.text', ng_name)
     });
 
-    it.skip('Edit a node group', () => {
-        cy.get(node_group_el.nodegroup_search).should('be.visible').type(`${ng_name}{enter}`);
+    it('Edit a node group', () => {
+        cy.get(node_group_el.search).should('be.visible').click().type(`${ng_name}{enter}`);
         cy.get(node_group_el.searched_nodegroup).click();
-        cy.get(node_group_el.nodegroup_edit_button).click();
-        cy.get(node_group_el.nodegroup_name).clear().type(ng_name_edited);
-        cy.xpath(node_group_el.nodegroup_edit_save_button).click();
-        cy.get(node_group_el.nodegroup_save_button).should('be.visible').click();
-        cy.contains('Node Group was successfully updated.');
-        cy.contains('Your data will be available shortly. Please see exporters list for more details.');
+        cy.get(node_group_el.edit_button).click();
+        cy.get(node_group_el.name).clear().type(ng_name_edited);
+        cy.get(node_group_el.edit_save_button).click();
+        cy.get(node_group_el.save_button).should('be.visible').click();
+        cy.get(menu_el.alertNotice).should('include.text', 'Node Group was successfully updated.');
+        cy.get(menu_el.alertInfo).should('include.text', 'Your data will be available shortly. Please see exporters list for more details.');
     });
 
     it('Delete a node group', () => {
-        cy.get(node_group_el.nodegroup_search).should('be.visible').click().type(`${ng_name}{enter}`);
+        cy.get(node_group_el.search).should('be.visible').click().type(`${ng_name_edited}{enter}`);
         cy.get(node_group_el.searched_nodegroup).click();
-        cy.get(node_group_el.nodegroup_delete_button).click();
-        cy.get(node_group_el.nodegroup_confirm_delete).click();
-        cy.contains('Node Group was successfully deleted.');
-        cy.contains('Your data will be available shortly. Please see exporters list for more details.');
+        cy.get(node_group_el.delete_button).click();
+        cy.get(node_group_el.confirm_delete).click();
+        cy.get(menu_el.alertNotice).should('include.text', 'Node Group was successfully deleted.');
+        cy.get(menu_el.alertInfo).should('include.text', 'Your data will be available shortly. Please see exporters list for more details.');
     });
 
 })
