@@ -10,6 +10,7 @@ export const ELEMENTS = {
     edit_button: '.io-form-action-edit',
     edit_save_button: '*[class^="submit io-form-button io-form-action-save io-form-action-save-existing ui primary button"]',
     delete_button: '.alert',
-    confirm_delete: '#ok-link'
+    confirm_delete: '#ok-link',
+    name_taken_message: '.required > .control > div.error'
 
 }
