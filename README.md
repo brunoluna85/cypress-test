@@ -10,6 +10,7 @@ npm run cy:run
 
 ## Parameters
 CYPRESS_baseUrl - change the default test URL
+
 CYPRESS_customer - change the default customer
 ### For example
 ```JavsScript
