@@ -9,6 +9,10 @@ Cypress.Commands.add('login_as', (user = "admin") => {
     Login.login_as(Cypress.env(user).username, Cypress.env(user).password);
 });
 
+Cypress.Commands.add('api_login_as', (user = "admin") => {
+    //TODO
+});
+
 Cypress.Commands.add('select_customer', (customer = `${Cypress.config('customer')}`) => {
     cy.get(menu_el.customerDropdown).type(customer).type('Cypress.io{enter}');
 });

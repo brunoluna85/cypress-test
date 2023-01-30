@@ -39,4 +39,8 @@ describe('Login', () => {
         .and('have.text', 'Signed out successfully.');
     cy.url().should('eq', `${Cypress.config('baseUrl')}`)
   })
+
+  it.skip('should login with api', () => {
+    //TODO
+  });
 })
